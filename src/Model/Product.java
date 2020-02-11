@@ -1,6 +1,10 @@
 package Model;
 
+import Control.*;
+
 public abstract class Product {
+	
+	public LinkedList<Product> productList = new LinkedList<>();  
 
 	public String name;
 	public float price;
@@ -16,6 +20,10 @@ public abstract class Product {
 	
 	public String productType() {
 		return type;
+	}
+	
+	public void addToList() {
+		productList.add(this);
 	}
 
 	protected void setPrice(float price) {
