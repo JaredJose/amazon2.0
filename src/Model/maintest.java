@@ -7,17 +7,17 @@ public class maintest {
 		item.setName("iPohne");
 		item.print();
 		
-		Fresh fruit = new Fresh("fruit");
+		Fresh fruit = new Fresh();
 		fruit.print();
 		
-		Game monopoly = new Game("Monopoly");
+		Game monopoly = new Game();
 		monopoly.print();
 		
 		Clothing dress = new Clothing();
 		dress.setName("Dress");
 		dress.print();
 		
-		Tool hammer = new Tool("Hammer");
+		Tool hammer = new Tool();
 		hammer.print();
 		
 		/* 

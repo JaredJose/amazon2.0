@@ -2,8 +2,7 @@ package Model;
 
 public class Tool extends Product {
 
-	Tool(String name) {
-		super.name = name;
+	Tool() {
 		super.type = "Tool";
 	}
 }

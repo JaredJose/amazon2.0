@@ -2,8 +2,7 @@ package Model;
 
 public class Game extends Product {
 
-	Game(String name) {
-		super.name = name;
+	Game() {
 		super.type = "Game";
 	}
 }

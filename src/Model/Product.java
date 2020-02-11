@@ -30,7 +30,7 @@ public abstract class Product {
 		this.ID = ID;
 	}
 	
-	
+	//Console
 	public void print() {
 		System.out.println(this);
 	}
