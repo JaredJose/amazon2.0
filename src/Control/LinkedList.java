@@ -3,13 +3,13 @@ package Control;
 import java.util.NoSuchElementException;
 
 public class LinkedList<T> {
-	
+
 	private Node<T> firstNode;
 	private Node<T> lastNode;
-	
+
 	public LinkedList() {
 	}
-	
+
 	public T getFirst() {
 		if (firstNode == null) {
 			throw new NoSuchElementException();
@@ -90,12 +90,9 @@ public class LinkedList<T> {
 		return firstNode == null ? 0 : firstNode.size();
 	}
 
+	// This toString method is not called. The toString method is called in the
+	// Product class.
 	public String toString() {
 		return "[" + (firstNode == null ? "" : firstNode.toString()) + "]";
 	}
-	
-	public static void main(String[] args) {
-		
-	}
-
 }

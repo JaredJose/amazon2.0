@@ -3,8 +3,6 @@ package Model;
 import Control.*;
 
 public abstract class Product {
-	
-	public LinkedList<Product> productList = new LinkedList<>();  
 
 	public String name;
 	public float price;
@@ -16,7 +14,7 @@ public abstract class Product {
 	public Product previous;
 	
 	public String toString() {
-		return (name + ", " + type);
+		return (name + ": " + type);
 	}
 	
 	public String productType() {
@@ -24,7 +22,7 @@ public abstract class Product {
 	}
 	
 	public void addToList() {
-		productList.add(this);
+		maintest.productList.add(this);
 	}
 
 	protected void setPrice(float price) {
