@@ -10,6 +10,7 @@ public abstract class Product {
 	public float price;
 	public int ID;
 	public String type;
+	public String description;
 	
 	public Product next;
 	public Product previous;
@@ -36,6 +37,10 @@ public abstract class Product {
 	
 	protected void setID(int ID) {
 		this.ID = ID;
+	}
+	
+	protected void setDescription(String desc) {
+		this.description = desc;
 	}
 	
 	//Console
