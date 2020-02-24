@@ -37,8 +37,20 @@ public abstract class Product {
 		this.ID = ID;
 	}
 	
-	protected void setDescription(String desc) {
-		this.description = desc;
+	protected String setDescription() {
+		return this.description;
+	}
+	
+	protected float getPrice() {
+		return this.price;
+	}
+	
+	protected String getName() {
+		return this.name;
+	}
+	
+	protected int getID() {
+		return this.ID;
 	}
 	
 	//Console
