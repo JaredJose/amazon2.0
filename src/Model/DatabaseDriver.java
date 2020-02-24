@@ -21,5 +21,23 @@ public class DatabaseDriver {
 		return conn;
 	}
 	
-	
+	public static void displayAll(){
+        String sql = "SELECT Name, Age, Grade, School, ID FROM class";
+        
+        try (Connection conn = connect();
+             Statement stmt  = conn.createStatement();
+             ResultSet rs    = stmt.executeQuery(sql)){
+            
+            // loop through the result set
+            while (rs.next()) {
+                System.out.println(rs.getString("Name") +  "\t" + 
+                                   rs.getInt("Age") + "\t" +
+                                   rs.getInt("Grade") + "\t" +
+                                   rs.getString("School") + "\t" +
+                                   rs.getInt("Id"));
+            }
+        } catch (SQLException e) {
+            System.out.println(e.getMessage());
+        }
+    }
 }
