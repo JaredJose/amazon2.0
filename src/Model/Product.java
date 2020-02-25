@@ -37,7 +37,15 @@ public abstract class Product {
 		this.ID = ID;
 	}
 	
-	protected String setDescription() {
+	protected void setDescription(String description) {
+		this.description = description;
+	}
+	
+	protected void setType(String type) {
+		this.type = type;
+	}
+	
+	protected String getDescription() {
 		return this.description;
 	}
 	

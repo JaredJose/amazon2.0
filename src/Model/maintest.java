@@ -1,7 +1,5 @@
 package Model;
 
-import Control.LinkedList;
-
 public class maintest {
 	
 	public static LinkedList<Product> productList = new LinkedList<>();  
