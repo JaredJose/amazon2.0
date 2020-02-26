@@ -170,4 +170,52 @@ public class DatabaseDriver {
 		}
 		return returnList;
 	}
+
+	public static LinkedList<Product> AddToCart(LinkedList<Product> currentCart, int pID){
+		String sql = "SELECT pID, Name, Price, Description, Category, INSTR(pID, '"+pID+"' peeps FROM products where peeps > 0";
+		int sType;
+		Product temp = null;
+
+		try(Connection conn = connect();
+			PreparedStatement pstmt = conn.prepareStatement(sql)) {
+
+			//pstmt.setInt(1, character);
+
+			ResultSet rs = pstmt.executeQuery();
+
+			while(rs.next()) {
+
+				sType = GetProductType(rs.getString("Category"));
+
+				switch(sType) {
+					case 1:
+						temp = new Clothing();
+						break;
+					case 2:
+						temp = new Electronic();
+						break;
+					case 3:
+						temp = new Fresh();
+						break;
+					case 4:
+						temp = new Game();
+						break;
+					default:
+						System.out.print("Error in creating temp object");
+				}
+
+				temp.setID(rs.getInt("pID"));
+				temp.setName(rs.getString("Name"));
+				temp.setPrice(rs.getFloat("Price"));
+				temp.setDescription(rs.getString("Description"));
+				temp.setType(rs.getString("Category"));
+
+				currentCart.add(temp);
+			}
+		} catch(SQLException e) {
+			System.out.println(e.getMessage());
+		}
+
+		return currentCart;
+	}
 }
