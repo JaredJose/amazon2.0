@@ -121,8 +121,8 @@ public class DatabaseDriver {
 		return retInt;
 	}
 
-	public static LinkedList<Product> BuildSplashLL(){
-		LinkedList<Product> returnList = new LinkedList<Product>();
+	public static CircleQueue<Product> BuildSplashLL(){
+		CircleQueue<Product> returnQueue = new CircleQueue<Product>();
 		ArrayList<Integer> selID = GetRandomIntegers();
 		Product temp = null;
 		int sType;
@@ -162,13 +162,13 @@ public class DatabaseDriver {
 					temp.setDescription(rs.getString("Description"));
 					temp.setType(rs.getString("Category"));
 
-					returnList.add(temp);
+					returnQueue.add(temp);
 				}
 			} catch(SQLException e) {
 				System.out.println(e.getMessage());
 			}
 		}
-		return returnList;
+		return returnQueue;
 	}
 
 	public static LinkedList<Product> AddToCart(LinkedList<Product> currentCart, int pID){
