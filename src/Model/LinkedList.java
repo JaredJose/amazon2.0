@@ -49,6 +49,14 @@ public class LinkedList<T> {
 
 	}
 
+	public T getObject() {
+		return firstNode.element;
+	}
+
+	public Node getNext() {
+		return this.getNext();
+	}
+
 	public T removeLast() {
 		if (firstNode == null) {
 			throw new NoSuchElementException();
@@ -74,15 +82,12 @@ public class LinkedList<T> {
 				lastNode = null;
 			}
 		} else {
-			Node<T> prevNode = firstNode.findPrevNode(element);
-			if (prevNode == null) {
+			Node<T> found = firstNode.next.findNode(element);
+			if (found == null) {
 				throw new NoSuchElementException();
-			} else {
-				prevNode.next = prevNode.next.next;
-				if (prevNode.next == null) {
-					lastNode = prevNode;
-				}
 			}
+			found.prev.next = found.next;
+			found.next.prev = found.prev;
 		}
 	}
 
