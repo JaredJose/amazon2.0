@@ -35,10 +35,10 @@ public class DatabaseDriver {
 		
 		switch(filter) {
 		case 1:
-			sql = "SELECT pID, Name, Price, Description, Category, INSTR(Category, '"+searchTerm+"') peeps FROM class WHERE peeps > 0;";
+			sql = "SELECT pID, Name, Price, Description, Category, INSTR(Category, '"+searchTerm+"') peeps FROM products WHERE peeps > 0;";
 			break;
 		case 2:
-			sql = "SELECT pID, Name, Price, Description, Category, INSTR(Name, '"+searchTerm+"') peeps FROM class WHERE peeps > 0;";
+			sql = "SELECT pID, Name, Price, Description, Category, INSTR(Name, '"+searchTerm+"') peeps FROM products WHERE peeps > 0;";
 			break;
 		default:
 			sql = "ERROR";
@@ -119,5 +119,55 @@ public class DatabaseDriver {
 		Random rand = new Random();
 		int retInt = rand.nextInt(20) + 1;
 		return retInt;
+	}
+
+	public static LinkedList<Product> BuildSplashLL(){
+		LinkedList<Product> returnList = new LinkedList<Product>();
+		ArrayList<Integer> selID = GetRandomIntegers();
+		Product temp = null;
+		int sType;
+
+		for(int i = 0; i < 5; i++){
+			String sql = "Select pID, Name, Price, Description, Category, INSTR(pID, '"+ selID.get(i) +"' peeps FROM products where peeps > 0";
+
+			try(Connection conn = connect();
+				PreparedStatement pstmt = conn.prepareStatement(sql)) {
+
+				ResultSet rs = pstmt.executeQuery();
+
+				while(rs.next()) {
+
+					sType = GetProductType(rs.getString("Category"));
+
+					switch(sType) {
+						case 1:
+							temp = new Clothing();
+							break;
+						case 2:
+							temp = new Electronic();
+							break;
+						case 3:
+							temp = new Fresh();
+							break;
+						case 4:
+							temp = new Game();
+							break;
+						default:
+							System.out.print("Error in creating temp object");
+					}
+
+					temp.setID(rs.getInt("pID"));
+					temp.setName(rs.getString("Name"));
+					temp.setPrice(rs.getFloat("Price"));
+					temp.setDescription(rs.getString("Description"));
+					temp.setType(rs.getString("Category"));
+
+					returnList.add(temp);
+				}
+			} catch(SQLException e) {
+				System.out.println(e.getMessage());
+			}
+		}
+		return returnList;
 	}
 }
