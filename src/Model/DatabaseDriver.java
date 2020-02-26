@@ -6,6 +6,8 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.ArrayList;
+import java.util.Random;
 
 public class DatabaseDriver {
 
@@ -98,5 +100,24 @@ public class DatabaseDriver {
 			retVal = 4;
 		
 		return retVal;
+	}
+
+	private static ArrayList<Integer> GetRandomIntegers(){
+		ArrayList<Integer> nums = new ArrayList<Integer>();
+		int temp = 0;
+		for(int i = 0; i < 5; i++){
+			temp = RandomInt();
+			while(nums.contains(temp))
+				temp = RandomInt();
+			nums.add(temp);
+		}
+
+		return nums;
+	}
+
+	private static int RandomInt(){
+		Random rand = new Random();
+		int retInt = rand.nextInt(20) + 1;
+		return retInt;
 	}
 }
