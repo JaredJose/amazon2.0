@@ -35,10 +35,10 @@ public class DatabaseDriver {
 		
 		switch(filter) {
 		case 1:
-			sql = "SELECT pID, Name, Price, Description, Category, INSTR(Category, '"+searchTerm+"') peeps FROM products WHERE peeps > 0;";
+			sql = "SELECT pID, Name, Price, Description, Category, Material, Production, Genre, Calories, INSTR(Category, '"+searchTerm+"') peeps FROM products WHERE peeps > 0;";
 			break;
 		case 2:
-			sql = "SELECT pID, Name, Price, Description, Category, INSTR(Name, '"+searchTerm+"') peeps FROM products WHERE peeps > 0;";
+			sql = "SELECT pID, Name, Price, Description, Category, Material, Production, Genre, Calories, INSTR(Name, '"+searchTerm+"') peeps FROM products WHERE peeps > 0;";
 			break;
 		default:
 			sql = "ERROR";
@@ -57,16 +57,16 @@ public class DatabaseDriver {
         		
         		switch(sType) {
         		case 1:
-        			 temp = new Clothing();
+        			 temp = new Clothing(rs.getString("Material"));
         			break;
         		case 2:
-        			 temp = new Electronic();
+        			 temp = new Electronic(rs.getBoolean("Production"));
         			break;
         		case 3:
-        			 temp = new Fresh();
+        			 temp = new Fresh(rs.getInt("Calories"));
         			break;
         		case 4:
-        			temp = new Game();
+        			temp = new Game(rs.getString("Genre"));
         			break;
 				default:
 					System.out.print("Error in creating temp object");
@@ -139,21 +139,21 @@ public class DatabaseDriver {
 
 					sType = GetProductType(rs.getString("Category"));
 
-					switch(sType) {
-						case 1:
-							temp = new Clothing();
-							break;
-						case 2:
-							temp = new Electronic();
-							break;
-						case 3:
-							temp = new Fresh();
-							break;
-						case 4:
-							temp = new Game();
-							break;
-						default:
-							System.out.print("Error in creating temp object");
+	        		switch(sType) {
+	        		case 1:
+	        			 temp = new Clothing(rs.getString("Material"));
+	        			break;
+	        		case 2:
+	        			 temp = new Electronic(rs.getBoolean("Production"));
+	        			break;
+	        		case 3:
+	        			 temp = new Fresh(rs.getInt("Calories"));
+	        			break;
+	        		case 4:
+	        			temp = new Game(rs.getString("Genre"));
+	        			break;
+					default:
+						System.out.print("Error in creating temp object");
 					}
 
 					temp.setID(rs.getInt("pID"));
@@ -187,21 +187,21 @@ public class DatabaseDriver {
 
 				sType = GetProductType(rs.getString("Category"));
 
-				switch(sType) {
-					case 1:
-						temp = new Clothing();
-						break;
-					case 2:
-						temp = new Electronic();
-						break;
-					case 3:
-						temp = new Fresh();
-						break;
-					case 4:
-						temp = new Game();
-						break;
-					default:
-						System.out.print("Error in creating temp object");
+        		switch(sType) {
+        		case 1:
+        			 temp = new Clothing(rs.getString("Material"));
+        			break;
+        		case 2:
+        			 temp = new Electronic(rs.getBoolean("Production"));
+        			break;
+        		case 3:
+        			 temp = new Fresh(rs.getInt("Calories"));
+        			break;
+        		case 4:
+        			temp = new Game(rs.getString("Genre"));
+        			break;
+				default:
+					System.out.print("Error in creating temp object");
 				}
 
 				temp.setID(rs.getInt("pID"));
@@ -235,21 +235,21 @@ public class DatabaseDriver {
 
 				sType = GetProductType(rs.getString("Category"));
 
-				switch(sType) {
-					case 1:
-						temp = new Clothing();
-						break;
-					case 2:
-						temp = new Electronic();
-						break;
-					case 3:
-						temp = new Fresh();
-						break;
-					case 4:
-						temp = new Game();
-						break;
-					default:
-						System.out.print("Error in creating temp object");
+        		switch(sType) {
+        		case 1:
+        			 temp = new Clothing(rs.getString("Material"));
+        			break;
+        		case 2:
+        			 temp = new Electronic(rs.getBoolean("Production"));
+        			break;
+        		case 3:
+        			 temp = new Fresh(rs.getInt("Calories"));
+        			break;
+        		case 4:
+        			temp = new Game(rs.getString("Genre"));
+        			break;
+				default:
+					System.out.print("Error in creating temp object");
 				}
 
 				temp.setID(rs.getInt("pID"));

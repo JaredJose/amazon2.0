@@ -4,9 +4,10 @@ public class Electronic extends Product {
 	
 	private boolean inProduction;
 
-	Electronic() {
+	Electronic(boolean inProduction) {
 		super.type = "Electronic";
 		super.addToList();
+		setProduction(inProduction);
 	}
 	
 	public void setProduction(boolean inProduction) {

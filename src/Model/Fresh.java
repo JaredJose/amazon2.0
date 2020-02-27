@@ -4,9 +4,10 @@ public class Fresh extends Product {
 	
 	private int calories;
 
-	Fresh() {
+	Fresh(int calories) {
 		super.type = "Fresh";
 		super.addToList();
+		setCalories(calories);
 	}
 	
 	public void setCalories(int calories) {

@@ -4,9 +4,10 @@ public class Game extends Product {
 
 	private String genre;
 	
-	Game() {
+	Game(String genre) {
 		super.type = "Game";
 		super.addToList();
+		setGenre(genre);
 	}
 	
 	public void setGenre(String genre) {
