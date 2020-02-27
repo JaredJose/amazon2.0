@@ -6,19 +6,19 @@ public class maintest {
 	
 	public static void main(String[] args) {
 		
-		Electronic item = new Electronic();
+		Electronic item = new Electronic(true);
 		item.setName("iPohne");
 		item.print();
 		
-		Fresh fruit = new Fresh();
+		Fresh fruit = new Fresh(100);
 		fruit.setName("Strawberry");
 		fruit.print();
 		
-		Game boardGame = new Game();
+		Game boardGame = new Game("board");
 		boardGame.setName("Monopoly");
 		boardGame.print();
 		
-		Clothing dress = new Clothing();
+		Clothing dress = new Clothing("silk");
 		dress.setName("Louis Vuitton");
 		dress.print();
 		
