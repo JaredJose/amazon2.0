@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ListView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.shape.Rectangle?>
+<?import javafx.scene.text.Font?>
+
+
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Control.cartController">
+    <children>
+        <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#232f3e" height="91.0" layoutY="-4.0" smooth="false" stroke="#232f3e" strokeType="INSIDE" width="600.0" />
+        <ImageView fitHeight="99.0" fitWidth="78.0" layoutX="24.0" layoutY="25.0" pickOnBounds="true" preserveRatio="true">
+            <image>
+                <Image url="@white-amazon-logo-png-6_1024x1024.png" />
+            </image>
+        </ImageView>
+        <TextField layoutX="123.0" layoutY="25.0" prefHeight="25.0" prefWidth="359.0" />
+        <Button layoutX="473.0" layoutY="25.0" mnemonicParsing="false" prefHeight="18.0" prefWidth="34.0" style="-fx-background-color: #FEBD69;">
+            <graphic>
+                <ImageView fx:id="searchBtn" fitHeight="19.0" fitWidth="18.0" pickOnBounds="true" preserveRatio="true">
+                    <image>
+                        <Image url="@search.png" />
+                    </image>
+                </ImageView>
+            </graphic>
+        </Button>
+        <Button fx:id="cartBtn" layoutX="522.0" layoutY="23.0" mnemonicParsing="false" onAction="#openCart" prefHeight="30.0" prefWidth="63.0">
+            <graphic>
+                <ImageView fitHeight="30.0" fitWidth="38.0" pickOnBounds="true" preserveRatio="true">
+                    <image>
+                        <Image url="@shopping-cart.png" />
+                    </image>
+                </ImageView>
+            </graphic>
+        </Button>
+        <Button fx:id="freshBtn" layoutX="141.0" layoutY="59.0" mnemonicParsing="false" onAction="#openFresh" prefHeight="25.0" prefWidth="102.0" style="-fx-background-color: transparent;" text="Fresh" textFill="WHITE" />
+        <Button fx:id="clothesBtn" layoutX="252.0" layoutY="59.0" mnemonicParsing="false" onAction="#openClothes" prefHeight="25.0" prefWidth="102.0" style="-fx-background-color: transparent;" text="Clothes" textFill="WHITE" />
+        <Button fx:id="gamesBtn" layoutX="360.0" layoutY="59.0" mnemonicParsing="false" onAction="#openGames" prefHeight="25.0" prefWidth="113.0" style="-fx-background-color: transparent;" text="Games" textFill="WHITE" />
+        <Label layoutX="9.0" layoutY="95.0" prefHeight="51.0" prefWidth="238.0" text="Your Shopping Cart">
+            <font>
+                <Font size="26.0" />
+            </font>
+        </Label>
+        <Label layoutX="14.0" layoutY="137.0" text="Your shopping cart lives to serve" />
+        <ListView fx:id="shoppingList" layoutX="15.0" layoutY="164.0" prefHeight="200.0" prefWidth="570.0" />
+        <Label fx:id="Subtotal" layoutX="416.0" layoutY="369.0" text="Subtotal:" />
+        <Label text="Label" />
+    </children>
+</Pane>
