@@ -128,7 +128,7 @@ public class DatabaseDriver {
 		int sType;
 
 		for(int i = 0; i < 5; i++){
-			String sql = "Select pID, Name, Price, Description, Category, INSTR(pID, '"+ selID.get(i) +"' peeps FROM products where peeps > 0";
+			String sql = "Select pID, Name, Price, Description, Category, Material, Production, Calories, Genre, INSTR(pID, '"+ selID.get(i) +"' peeps FROM products where peeps > 0";
 
 			try(Connection conn = connect();
 				PreparedStatement pstmt = conn.prepareStatement(sql)) {
@@ -172,7 +172,7 @@ public class DatabaseDriver {
 	}
 
 	public static LinkedList<Product> AddToCart(LinkedList<Product> currentCart, int pID){
-		String sql = "SELECT pID, Name, Price, Description, Category, INSTR(pID, '"+pID+"' peeps FROM products where peeps > 0";
+		String sql = "SELECT pID, Name, Price, Description, Category, Material, Production, Calories, Genre, INSTR(pID, '"+pID+"' peeps FROM products where peeps > 0";
 		int sType;
 		Product temp = null;
 
@@ -220,7 +220,7 @@ public class DatabaseDriver {
 	}
 	
 	public static Product getProd(int prodID) {
-		String sql = "SELECT pID, Name, Price, Description, Category, INSTR(pID, '"+prodID+"' peeps FROM products where peeps > 0";
+		String sql = "SELECT pID, Name, Price, Description, Category, Material, Production, Calories, Genre, INSTR(pID, '"+prodID+"' peeps FROM products where peeps > 0";
 		int sType;
 		Product temp = null;
 
@@ -263,5 +263,76 @@ public class DatabaseDriver {
 			System.out.println(e.getMessage());
 		}
 		return temp;
+	}
+	
+	public static Clothing pullClothing(LinkedList<Product> list) {
+		Clothing temp = (Clothing) list.getFirst();
+		list.removeFirst();
+		return temp;
+	}
+	
+	public static Electronic pullElectronic(LinkedList<Product> list) {
+		Electronic temp = (Electronic) list.getFirst();
+		list.removeFirst();
+		return temp;
+	}
+	
+	public static Game pullGame(LinkedList<Product> list) {
+		Game temp = (Game) list.getFirst();
+		list.removeFirst();
+		return temp;
+	}
+	
+	public static Fresh pullFresh(LinkedList<Product> list) {
+		Fresh temp = (Fresh) list.getFirst();
+		list.removeFirst();
+		return temp;
+	}
+	
+	public static CircleQueue<Product> BuildCategoryCQ(String category){
+		CircleQueue<Product> returnQueue = new CircleQueue<Product>();
+		Product temp = null;
+		int sType;
+
+			String sql = "Select pID, Name, Price, Description, Category, Material, Production, Calories, Genre, INSTR(Category, '"+category+"' peeps FROM products where peeps > 0";
+
+			try(Connection conn = connect();
+				PreparedStatement pstmt = conn.prepareStatement(sql)) {
+
+				ResultSet rs = pstmt.executeQuery();
+
+				while(rs.next()) {
+
+					sType = GetProductType(rs.getString("Category"));
+
+	        		switch(sType) {
+	        		case 1:
+	        			 temp = new Clothing(rs.getString("Material"));
+	        			break;
+	        		case 2:
+	        			 temp = new Electronic(rs.getBoolean("Production"));
+	        			break;
+	        		case 3:
+	        			 temp = new Fresh(rs.getInt("Calories"));
+	        			break;
+	        		case 4:
+	        			temp = new Game(rs.getString("Genre"));
+	        			break;
+					default:
+						System.out.print("Error in creating temp object");
+					}
+
+					temp.setID(rs.getInt("pID"));
+					temp.setName(rs.getString("Name"));
+					temp.setPrice(rs.getFloat("Price"));
+					temp.setDescription(rs.getString("Description"));
+					temp.setType(rs.getString("Category"));
+
+					returnQueue.add(temp);
+				}
+			} catch(SQLException e) {
+				System.out.println(e.getMessage());
+			}
+		return returnQueue;
 	}
 }
