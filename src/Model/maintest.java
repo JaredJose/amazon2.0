@@ -36,8 +36,11 @@ public class maintest {
 		
 		LinkedList<Product> temp = DatabaseDriver.BuildLL(1, "Fresh");
 		
-		while(temp.getNext() != null) {
-			System.out.println(temp.getFirst());
-		}
+		
+		//while(temp.getNext() != null) {
+		//	System.out.println(temp.getFirst());
+		//}
+		
+		System.out.println(temp);
 	}
 }
