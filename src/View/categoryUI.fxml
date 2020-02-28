@@ -19,8 +19,8 @@
                 <Image url="@white-amazon-logo-png-6_1024x1024.png" />
             </image>
         </ImageView>
-        <TextField layoutX="133.0" layoutY="35.0" prefHeight="25.0" prefWidth="359.0" />
-        <Button layoutX="483.0" layoutY="35.0" mnemonicParsing="false" prefHeight="18.0" prefWidth="34.0" style="-fx-background-color: #FEBD69;">
+        <TextField fx:id="txtField" layoutX="133.0" layoutY="35.0" prefHeight="25.0" prefWidth="359.0" />
+        <Button fx:id="searchBtn" layoutX="483.0" layoutY="35.0" mnemonicParsing="false" prefHeight="18.0" prefWidth="34.0" style="-fx-background-color: #FEBD69;">
             <graphic>
                 <ImageView fitHeight="19.0" fitWidth="18.0" pickOnBounds="true" preserveRatio="true">
                     <image>
@@ -29,7 +29,7 @@
                 </ImageView>
             </graphic>
         </Button>
-        <Button layoutX="523.0" layoutY="29.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="63.0">
+        <Button fx:id="cartBtn" layoutX="523.0" layoutY="29.0" mnemonicParsing="false" onAction="#openCart" prefHeight="30.0" prefWidth="63.0">
             <graphic>
                 <ImageView fitHeight="30.0" fitWidth="38.0" pickOnBounds="true" preserveRatio="true">
                     <image>
@@ -38,48 +38,48 @@
                 </ImageView>
             </graphic>
         </Button>
-        <Button layoutX="151.0" layoutY="69.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="102.0" style="-fx-background-color: transparent;" text="Fresh" textFill="WHITE" />
-        <Button layoutX="262.0" layoutY="69.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="102.0" style="-fx-background-color: transparent;" text="Clothes" textFill="WHITE" />
-        <Button layoutX="370.0" layoutY="69.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="113.0" style="-fx-background-color: transparent;" text="Games" textFill="WHITE" />
+        <Button fx:id="freshBtn" layoutX="151.0" layoutY="69.0" mnemonicParsing="false" onAction="#openFresh" prefHeight="25.0" prefWidth="102.0" style="-fx-background-color: transparent;" text="Fresh" textFill="WHITE" />
+        <Button fx:id="clothesBtn" layoutX="262.0" layoutY="69.0" mnemonicParsing="false" onAction="#clothesOpen" prefHeight="25.0" prefWidth="102.0" style="-fx-background-color: transparent;" text="Clothes" textFill="WHITE" />
+        <Button fx:id="gamesBtn" layoutX="370.0" layoutY="69.0" mnemonicParsing="false" onAction="#openGames" prefHeight="25.0" prefWidth="113.0" style="-fx-background-color: transparent;" text="Games" textFill="WHITE" />
         <Label text="Label" />
         <Label layoutX="11.0" layoutY="109.0" text="Product Type">
             <font>
                 <Font size="21.0" />
             </font>
         </Label>
-        <Button layoutX="14.0" layoutY="231.0" mnemonicParsing="false" prefHeight="69.0" prefWidth="52.0" text="&lt;">
+        <Button fx:id="nextLeftBtn" layoutX="14.0" layoutY="231.0" mnemonicParsing="false" onAction="#moveListLeft" prefHeight="69.0" prefWidth="52.0" text="&lt;">
             <font>
                 <Font size="21.0" />
             </font>
         </Button>
-        <Button layoutX="534.0" layoutY="231.0" mnemonicParsing="false" prefHeight="69.0" prefWidth="52.0" text="&gt;">
+        <Button fx:id="nextRightBtn" layoutX="534.0" layoutY="231.0" mnemonicParsing="false" onAction="#moveListRight" prefHeight="69.0" prefWidth="52.0" text="&gt;">
             <font>
                 <Font size="21.0" />
             </font>
         </Button>
-        <Button layoutX="74.0" layoutY="230.0" mnemonicParsing="false" prefHeight="49.0" prefWidth="63.0">
+        <Button fx:id="productBtn1" layoutX="74.0" layoutY="230.0" mnemonicParsing="false" onAction="#openProduct" prefHeight="49.0" prefWidth="63.0">
             <graphic>
                 <ImageView fitHeight="63.0" fitWidth="60.0" pickOnBounds="true" preserveRatio="true" />
             </graphic>
         </Button>
-        <Button layoutX="164.0" layoutY="230.0" mnemonicParsing="false" prefHeight="49.0" prefWidth="63.0">
+        <Button fx:id="productBtn2" layoutX="164.0" layoutY="230.0" mnemonicParsing="false" onAction="#openProduct" prefHeight="49.0" prefWidth="63.0">
             <graphic>
                 <ImageView fitHeight="63.0" fitWidth="60.0" pickOnBounds="true" preserveRatio="true" />
             </graphic>
         </Button>
-        <Button layoutX="253.0" layoutY="230.0" mnemonicParsing="false" prefHeight="49.0" prefWidth="63.0">
+        <Button fx:id="productBtn3" layoutX="253.0" layoutY="230.0" mnemonicParsing="false" onAction="#openProduct" prefHeight="49.0" prefWidth="63.0">
             <graphic>
                 <ImageView fitHeight="63.0" fitWidth="60.0" pickOnBounds="true" preserveRatio="true" />
             </graphic>
         </Button>
-        <Button layoutX="344.0" layoutY="230.0" mnemonicParsing="false" prefHeight="49.0" prefWidth="63.0">
+        <Button fx:id="productBtn4" layoutX="344.0" layoutY="230.0" mnemonicParsing="false" onAction="#openProduct" prefHeight="49.0" prefWidth="63.0">
             <graphic>
                 <ImageView fitHeight="63.0" fitWidth="60.0" pickOnBounds="true" preserveRatio="true" />
             </graphic>
         </Button>
         <Button layoutX="441.0" layoutY="230.0" mnemonicParsing="false" prefHeight="49.0" prefWidth="63.0">
             <graphic>
-                <ImageView fitHeight="63.0" fitWidth="60.0" pickOnBounds="true" preserveRatio="true" />
+                <ImageView fx:id="productBtn5" fitHeight="63.0" fitWidth="60.0" onDragDetected="#openProduct" pickOnBounds="true" preserveRatio="true" />
             </graphic>
         </Button>
         <Label layoutX="156.0" layoutY="180.0" text="Here are the products">
