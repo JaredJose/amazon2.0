@@ -6,6 +6,7 @@ public class maintest {
 	
 	public static void main(String[] args) {
 		
+		/*
 		Electronic item = new Electronic(true);
 		item.setName("iPohne");
 		item.print();
@@ -32,5 +33,11 @@ public class maintest {
 		 * Im shit 
 		 * leos fat ass
 		 */
+		
+		LinkedList<Product> temp = DatabaseDriver.BuildLL(1, "Fresh");
+		
+		while(temp.getNext() != null) {
+			System.out.println(temp.getFirst());
+		}
 	}
 }
