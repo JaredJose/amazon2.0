@@ -11,7 +11,7 @@
 <?import javafx.scene.text.Font?>
 
 
-<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="616.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1">
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="616.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Control.categoryController">
     <children>
         <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#232f3e" height="99.0" smooth="false" stroke="#232f3e" strokeType="INSIDE" width="600.0" />
         <ImageView fitHeight="99.0" fitWidth="78.0" layoutX="34.0" layoutY="35.0" pickOnBounds="true" preserveRatio="true">
@@ -42,7 +42,7 @@
         <Button fx:id="clothesBtn" layoutX="262.0" layoutY="69.0" mnemonicParsing="false" onAction="#clothesOpen" prefHeight="25.0" prefWidth="102.0" style="-fx-background-color: transparent;" text="Clothes" textFill="WHITE" />
         <Button fx:id="gamesBtn" layoutX="370.0" layoutY="69.0" mnemonicParsing="false" onAction="#openGames" prefHeight="25.0" prefWidth="113.0" style="-fx-background-color: transparent;" text="Games" textFill="WHITE" />
         <Label text="Label" />
-        <Label layoutX="11.0" layoutY="109.0" text="Product Type">
+        <Label fx:id="productLabel" layoutX="11.0" layoutY="109.0" text="Product Type">
             <font>
                 <Font size="21.0" />
             </font>
