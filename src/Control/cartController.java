@@ -1,54 +1,29 @@
 package Control;
 
+import View.main;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
-import javafx.scene.control.Label;
 import javafx.scene.control.ListView;
-import javafx.scene.image.ImageView;
+
+import java.io.IOException;
 
 public class cartController {
 
-    @FXML
-    private ImageView searchBtn;
+    private main Main;
 
     @FXML
-    private Button cartBtn;
+    private Button homeBtn;
 
     @FXML
-    private Button freshBtn;
+    private ListView<?> cartList;
 
     @FXML
-    private Button clothesBtn;
+    void goHome(ActionEvent event) throws IOException {
 
-    @FXML
-    private Button gamesBtn;
-
-    @FXML
-    private ListView<?> shoppingList;
-
-    @FXML
-    private Label Subtotal;
-
-    @FXML
-    void openCart(ActionEvent event) {
-
+        Main.showMainMenu();
     }
 
-    @FXML
-    void openClothes(ActionEvent event) {
 
-    }
-
-    @FXML
-    void openFresh(ActionEvent event) {
-
-    }
-
-    @FXML
-    void openGames(ActionEvent event) {
-
-    }
 
 }
-

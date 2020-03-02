@@ -1,35 +1,24 @@
 package Control;
 
+import View.main;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.ListView;
-import javafx.scene.control.TextField;
-import javafx.scene.image.ImageView;
-import javafx.scene.input.MouseEvent;
+
+import java.io.IOException;
 
 public class searchController {
 
     @FXML
-    private TextField txtField;
-
-    @FXML
-    private ImageView searchBtn;
-
-    @FXML
-    private Button cartBtn;
+    private Button homeBtn;
 
     @FXML
     private ListView<?> searchList;
 
     @FXML
-    void openCart(ActionEvent event) {
-
-    }
-
-    @FXML
-    void searchClicked(MouseEvent event) {
-
+    void goHome(ActionEvent event) throws IOException {
+        main.showMainMenu();
     }
 
 }

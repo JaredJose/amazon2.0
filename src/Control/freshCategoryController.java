@@ -5,11 +5,13 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
-import javafx.scene.image.ImageView;
+import javafx.scene.control.ListView;
 
 import java.io.IOException;
 
-public class productController {
+public class freshCategoryController {
+
+    int productType = 0;
 
     @FXML
     private Button homeBtn;
@@ -18,17 +20,14 @@ public class productController {
     private Label productLbl;
 
     @FXML
-    private ImageView imageBox;
-
-    @FXML
-    private Label priceLbl;
-
-    @FXML
-    private Label descLbl;
+    private ListView<?> productList;
 
     @FXML
     void goHome(ActionEvent event) throws IOException {
-        main.showMainMenu();
+            main.showMainMenu();
     }
 
+
+
 }
+

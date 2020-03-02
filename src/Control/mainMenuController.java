@@ -1,14 +1,17 @@
 package Control;
 
+import View.main;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
 
+import java.io.IOException;
+
 public class mainMenuController {
 
     @FXML
-    private TextField txtfieldupdate;
+    private TextField searchBar;
 
     @FXML
     private Button searchBtn;
@@ -26,28 +29,34 @@ public class mainMenuController {
     private Button gameBtn;
 
     @FXML
-    void openCart(ActionEvent event) {
+    void getSearch(ActionEvent event) {
 
     }
 
     @FXML
-    void openClothes(ActionEvent event) {
-
+    void openCart(ActionEvent event) throws IOException {
+        main.showCart();
     }
 
     @FXML
-    void openFresh(ActionEvent event) {
-
+    void openClothes(ActionEvent event) throws IOException {
+        main.showClothes();
     }
 
     @FXML
-    void openGames(ActionEvent event) {
-
+    void openFresh(ActionEvent event) throws IOException {
+        main.showFresh();
     }
 
     @FXML
-    void searchClicked(ActionEvent event) {
+    void openGames(ActionEvent event) throws IOException {
+        main.showGames();
+    }
 
+    @FXML
+    void searchClicked(ActionEvent event) throws IOException {
+        String searchterm = searchBar.getText();
+        main.showSearch();
     }
 
 }

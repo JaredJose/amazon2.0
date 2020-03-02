@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.SplitPane?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Control.mainMenuController">
+    <children>
+        <SplitPane dividerPositions="0.21608040201005024" layoutX="155.0" layoutY="53.0" orientation="VERTICAL" prefHeight="400.0" prefWidth="600.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+            <items>
+                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="100.0" prefWidth="160.0" style="-fx-background-color: #232f3e;">
+                    <children>
+                        <ImageView fitHeight="56.0" fitWidth="103.0" layoutX="26.0" layoutY="22.0" pickOnBounds="true" preserveRatio="true">
+                            <image>
+                                <Image url="@../images/white-amazon-logo-png-6_1024x1024.png" />
+                            </image>
+                        </ImageView>
+                        <TextField fx:id="searchBar" layoutX="162.0" layoutY="28.0" onAction="#getSearch" prefHeight="25.0" prefWidth="282.0" />
+                        <Button fx:id="searchBtn" layoutX="444.0" layoutY="26.0" mnemonicParsing="false" onAction="#searchClicked" prefHeight="25.0" prefWidth="42.0" style="-fx-background-color: #FF9900;">
+                            <graphic>
+                                <ImageView fitHeight="21.0" fitWidth="33.0" pickOnBounds="true" preserveRatio="true">
+                                    <image>
+                                        <Image url="@../images/search.png" />
+                                    </image>
+                                </ImageView>
+                            </graphic>
+                        </Button>
+                        <Button fx:id="cartBtn" layoutX="504.0" layoutY="25.0" mnemonicParsing="false" onAction="#openCart" prefHeight="29.0" prefWidth="57.0">
+                            <graphic>
+                                <ImageView fitHeight="28.0" fitWidth="47.0" pickOnBounds="true" preserveRatio="true">
+                                    <image>
+                                        <Image url="@../images/shopping-cart.png" />
+                                    </image>
+                                </ImageView>
+                            </graphic>
+                        </Button>
+                    </children>
+                </AnchorPane>
+                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="100.0" prefWidth="160.0">
+                    <children>
+                        <Button fx:id="freshBtn" layoutX="33.0" layoutY="33.0" mnemonicParsing="false" onAction="#openFresh" prefHeight="235.0" prefWidth="150.0" text="Fresh" />
+                        <Button fx:id="clothesBtn" layoutX="224.0" layoutY="33.0" mnemonicParsing="false" onAction="#openClothes" prefHeight="235.0" prefWidth="150.0" text="Clothes" />
+                        <Button fx:id="gameBtn" layoutX="414.0" layoutY="33.0" mnemonicParsing="false" onAction="#openGames" prefHeight="235.0" prefWidth="150.0" text="Games" />
+                    </children>
+                </AnchorPane>
+            </items>
+        </SplitPane>
+    </children>
+</AnchorPane>

@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ListView?>
+<?import javafx.scene.control.SplitPane?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Control.freshCategoryController">
+    <children>
+        <SplitPane dividerPositions="0.27386934673366836" orientation="VERTICAL" prefHeight="400.0" prefWidth="600.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+            <items>
+                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="100.0" prefWidth="160.0" style="-fx-background-color: #232f3e;">
+                    <children>
+                        <Button fx:id="homeBtn" layoutX="241.0" layoutY="33.0" mnemonicParsing="false" onAction="#goHome" prefHeight="40.0" prefWidth="116.0" style="-fx-background-color: #FF9900;" text="Home" textFill="WHITE">
+                            <font>
+                                <Font size="21.0" />
+                            </font>
+                        </Button>
+                    </children>
+                </AnchorPane>
+                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="100.0" prefWidth="160.0">
+                    <children>
+                        <Label fx:id="productLbl" layoutX="14.0" layoutY="14.0" prefHeight="45.0" prefWidth="166.0" text="Fresh">
+                            <font>
+                                <Font size="26.0" />
+                            </font>
+                        </Label>
+                        <ListView fx:id="productList" layoutX="23.0" layoutY="72.0" prefHeight="200.0" prefWidth="552.0" />
+                        <Label layoutX="182.0" layoutY="42.0" text="Here are your products">
+                            <font>
+                                <Font size="23.0" />
+                            </font>
+                        </Label>
+                    </children>
+                </AnchorPane>
+            </items>
+        </SplitPane>
+    </children>
+</AnchorPane>
