@@ -128,7 +128,7 @@ public class DatabaseDriver {
 		int sType;
 
 		for(int i = 0; i < 5; i++){
-			String sql = "Select pID, Name, Price, Description, Category, Material, Production, Calories, Genre, INSTR(pID, '"+ selID.get(i) +"' peeps FROM products where peeps > 0";
+			String sql = "Select pID, Name, Price, Description, Category, Material, Production, Calories, Genre FROM products where pID == "+selID.get(i);
 
 			try(Connection conn = connect();
 				PreparedStatement pstmt = conn.prepareStatement(sql)) {
@@ -172,7 +172,7 @@ public class DatabaseDriver {
 	}
 
 	public static LinkedList<Product> AddToCart(LinkedList<Product> currentCart, int pID){
-		String sql = "SELECT pID, Name, Price, Description, Category, Material, Production, Calories, Genre, INSTR(pID, '"+pID+"' peeps FROM products where peeps > 0";
+		String sql = "SELECT pID, Name, Price, Description, Category, Material, Production, Calories, Genre FROM products where pID == "+pID;
 		int sType;
 		Product temp = null;
 
@@ -219,8 +219,8 @@ public class DatabaseDriver {
 		return currentCart;
 	}
 	
-	public static Product getProd(int prodID) {
-		String sql = "SELECT pID, Name, Price, Description, Category, Material, Production, Calories, Genre, INSTR(pID, '"+prodID+"' peeps FROM products where peeps > 0";
+	public static Product getProd(String name) {
+		String sql = "SELECT pID, Name, Price, Description, Category, Material, Production, Calories, Genre, INSTR(Name, '"+name+"' peeps FROM products where peeps > 0";
 		int sType;
 		Product temp = null;
 
@@ -334,5 +334,28 @@ public class DatabaseDriver {
 				System.out.println(e.getMessage());
 			}
 		return returnQueue;
+	}
+	
+	
+	public static String getProdTypeFromName(String name) {
+		String sql = "SELECT pID, Name, Price, Description, Category, Material, Production, Calories, Genre, INSTR(Name, '"+name+"' peeps FROM products where peeps > 0";
+		int sType;
+		String ret = "";
+
+		try(Connection conn = connect();
+			PreparedStatement pstmt = conn.prepareStatement(sql)) {
+
+			//pstmt.setInt(1, character);
+
+			ResultSet rs = pstmt.executeQuery();
+
+			while(rs.next()) {
+
+				ret = rs.getString("Category");
+			}
+		} catch(SQLException e) {
+			System.out.println(e.getMessage());
+		}
+		return ret;
 	}
 }

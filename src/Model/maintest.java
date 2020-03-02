@@ -34,13 +34,19 @@ public class maintest {
 		 * leos fat ass
 		 */
 		
-		LinkedList<Product> temp = DatabaseDriver.BuildLL(1, "Fresh");
+		
+		//LinkedList<Product> temp = DatabaseDriver.BuildLL(1, "Clothing");
 		
 		
 		//while(temp.getNext() != null) {
 		//	System.out.println(temp.getFirst());
 		//}
 		
+		
+		CircleQueue<Product> temp = DatabaseDriver.BuildSplashLL();
+		
 		System.out.println(temp);
+		
+		//System.out.println(temp.size());
 	}
 }

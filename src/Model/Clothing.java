@@ -10,6 +10,11 @@ public class Clothing extends Product {
 		setMaterial(material);
 	}
 	
+	Clothing(){
+		super.type = "Clothing";
+		super.addToList();
+	}
+	
 	public void setMaterial(String material) {
 		this.material = material;
 	}
