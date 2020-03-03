@@ -63,7 +63,7 @@ public class productController implements Initializable  {
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
 
-        /*
+
         selectedProd = ProgramDriver.GetSelProd();
 
         if(selectedProd.equalsIgnoreCase("T shirt"))
@@ -93,10 +93,10 @@ public class productController implements Initializable  {
             imageBox.setImage(image);
         }
 
-         */
 
 
 
+        /*
         selectedProd = ProgramDriver.GetSelProd();
         prodType = DatabaseDriver.getProdTypeFromName(selectedProd);
 
@@ -129,6 +129,8 @@ public class productController implements Initializable  {
         productLbl.setText(name);
         priceLbl.setText(price.toString());
         descLbl.setText(desc);
+
+         */
 
 
 
