@@ -7,7 +7,6 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Control.productController">
     <children>
         <SplitPane dividerPositions="0.24371859296482412" layoutX="152.0" layoutY="24.0" orientation="VERTICAL" prefHeight="400.0" prefWidth="600.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
@@ -34,15 +33,15 @@
                                 <Font size="25.0" />
                             </font>
                         </Label>
-                        <Label fx:id="descLbl" layoutX="14.0" layoutY="104.0" prefHeight="36.0" prefWidth="112.0" text="Description">
+                        <Label fx:id="descLbl" layoutX="14.0" layoutY="104.0" prefHeight="94.0" prefWidth="290.0" text="Description">
                             <font>
                                 <Font size="18.0" />
                             </font>
                         </Label>
+                  <Button layoutX="36.0" layoutY="207.0" mnemonicParsing="false" onAction="#addCart" text="Add to Cart" />
                     </children>
                 </AnchorPane>
             </items>
         </SplitPane>
     </children>
 </AnchorPane>
-

@@ -1,5 +1,7 @@
 package Control;
 
+import Model.LinkedList;
+import Model.Product;
 import View.main;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -13,6 +15,7 @@ import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.ListView;
+import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
 
 import java.io.IOException;
@@ -21,6 +24,7 @@ import java.util.ResourceBundle;
 
 public class clothesCategoryController implements Initializable {
 
+    String selectedProduct = "";
     int productType = 0;
 
     @FXML
@@ -41,8 +45,22 @@ public class clothesCategoryController implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
+        /*
         productList.setItems(items);
-        items.add("Die");
+        items.add("T shirt");
+        items.add("Pants");
+        items.add("Supreme Turtleneck");
+
+         */
+
+
+        productList.setItems(items);
+        LinkedList<Product> clothesList = ProgramDriver.getClothesList();
+
+        for(int x = 0;x < clothesList.size();x++)
+            items.add(clothesList.toString());
+
+
     }
 
     @FXML
@@ -58,14 +76,30 @@ public class clothesCategoryController implements Initializable {
     }
 
     @FXML
-    void loadProducts(ActionEvent event) {
+    void selectProduct(MouseEvent event) throws IOException {
+
+
+        selectedProduct = productList.getSelectionModel().getSelectedItem();
+        ProgramDriver.SetSelProd(selectedProduct);
+
+
+        Parent freshViewParent = FXMLLoader.load(getClass().getResource("/View/productUI.fxml"));
+        Scene freshViewScene = new Scene(freshViewParent);
+
+        //This line gets scene info
+        Stage window = (Stage) ((Node)event.getSource()).getScene().getWindow();
+
+        window.setScene(freshViewScene);
+        window.show();
+
+
 
     }
 
 
-    @FXML
-    void Load(ActionEvent event) {
 
-    }
+
+
+
 }
 

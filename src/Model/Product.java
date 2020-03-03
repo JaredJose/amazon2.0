@@ -45,15 +45,15 @@ public abstract class Product {
 		this.type = type;
 	}
 	
-	protected String getDescription() {
+	public String getDescription() {
 		return this.description;
 	}
 	
-	protected float getPrice() {
+	public float getPrice() {
 		return this.price;
 	}
 	
-	protected String getName() {
+	public String getName() {
 		return this.name;
 	}
 	

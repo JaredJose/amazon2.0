@@ -13,83 +13,83 @@ public class DatabaseDriver {
 
 	public static Connection connect() {
 		String url = "jdbc:sqlite:src/Model/amazon2.db";
-		
+
 		Connection conn = null;
-		
+
 		try {
 			conn = DriverManager.getConnection(url);
 		}
 		catch(SQLException e) {
 			System.out.print(e.getMessage());
 		}
-		
+
 		return conn;
 	}
-	
+
 	public static LinkedList<Product> BuildLL(int filter, String searchTerm){
-		
+
 		String sql;
 		int sType;
 		Product temp = null;
 		LinkedList<Product> returnList = new LinkedList();
-		
+
 		switch(filter) {
-		case 1:
-			sql = "SELECT pID, Name, Price, Description, Category, Material, Production, Genre, Calories, INSTR(Category, '"+searchTerm+"') peeps FROM products WHERE peeps > 0;";
-			break;
-		case 2:
-			sql = "SELECT pID, Name, Price, Description, Category, Material, Production, Genre, Calories, INSTR(Name, '"+searchTerm+"') peeps FROM products WHERE peeps > 0;";
-			break;
-		default:
-			sql = "ERROR";
+			case 1:
+				sql = "SELECT pID, Name, Price, Description, Category, Material, Production, Genre, Calories, INSTR(Category, '"+searchTerm+"') peeps FROM products WHERE peeps > 0;";
+				break;
+			case 2:
+				sql = "SELECT pID, Name, Price, Description, Category, Material, Production, Genre, Calories, INSTR(Name, '"+searchTerm+"') peeps FROM products WHERE peeps > 0;";
+				break;
+			default:
+				sql = "ERROR";
 		}
-        
-        try(Connection conn = connect();
-        		PreparedStatement pstmt = conn.prepareStatement(sql)) {
-        	
-        	//pstmt.setInt(1, character);
-        	
-        	ResultSet rs = pstmt.executeQuery();
-        	
-        	while(rs.next()) {
-        		
-        		sType = GetProductType(rs.getString("Category"));
-        		
-        		switch(sType) {
-        		case 1:
-        			 temp = new Clothing(rs.getString("Material"));
-        			break;
-        		case 2:
-        			 temp = new Electronic(rs.getBoolean("Production"));
-        			break;
-        		case 3:
-        			 temp = new Fresh(rs.getInt("Calories"));
-        			break;
-        		case 4:
-        			temp = new Game(rs.getString("Genre"));
-        			break;
-				default:
-					System.out.print("Error in creating temp object");
-        		}
-        		
-        		temp.setID(rs.getInt("pID"));
-        		temp.setName(rs.getString("Name"));
-        		temp.setPrice(rs.getFloat("Price"));
-        		temp.setDescription(rs.getString("Description"));
-        		temp.setType(rs.getString("Category"));
-        		
-        		returnList.add(temp);
-        	}
-        } catch(SQLException e) {
-        	System.out.println(e.getMessage());
-        }
-        
-        return returnList;
-    }
-	
+
+		try(Connection conn = connect();
+			PreparedStatement pstmt = conn.prepareStatement(sql)) {
+
+			//pstmt.setInt(1, character);
+
+			ResultSet rs = pstmt.executeQuery();
+
+			while(rs.next()) {
+
+				sType = GetProductType(rs.getString("Category"));
+
+				switch(sType) {
+					case 1:
+						temp = new Clothing(rs.getString("Material"));
+						break;
+					case 2:
+						temp = new Electronic(rs.getBoolean("Production"));
+						break;
+					case 3:
+						temp = new Fresh(rs.getInt("Calories"));
+						break;
+					case 4:
+						temp = new Game(rs.getString("Genre"));
+						break;
+					default:
+						System.out.print("Error in creating temp object");
+				}
+
+				temp.setID(rs.getInt("pID"));
+				temp.setName(rs.getString("Name"));
+				temp.setPrice(rs.getFloat("Price"));
+				temp.setDescription(rs.getString("Description"));
+				temp.setType(rs.getString("Category"));
+
+				returnList.add(temp);
+			}
+		} catch(SQLException e) {
+			System.out.println(e.getMessage());
+		}
+
+		return returnList;
+	}
+
 	private static int GetProductType(String type) {
 		int retVal = 0;
-		
+
 		if(type.equalsIgnoreCase("Clothing"))
 			retVal = 1;
 		else if(type.equalsIgnoreCase("Electronics"))
@@ -98,7 +98,7 @@ public class DatabaseDriver {
 			retVal = 3;
 		else if(type.equalsIgnoreCase("Game"))
 			retVal = 4;
-		
+
 		return retVal;
 	}
 
@@ -128,7 +128,7 @@ public class DatabaseDriver {
 		int sType;
 
 		for(int i = 0; i < 5; i++){
-			String sql = "Select pID, Name, Price, Description, Category, INSTR(pID, '"+ selID.get(i) +"' peeps FROM products where peeps > 0";
+			String sql = "Select pID, Name, Price, Description, Category, Material, Production, Calories, Genre FROM products where pID == "+selID.get(i);
 
 			try(Connection conn = connect();
 				PreparedStatement pstmt = conn.prepareStatement(sql)) {
@@ -139,21 +139,21 @@ public class DatabaseDriver {
 
 					sType = GetProductType(rs.getString("Category"));
 
-	        		switch(sType) {
-	        		case 1:
-	        			 temp = new Clothing(rs.getString("Material"));
-	        			break;
-	        		case 2:
-	        			 temp = new Electronic(rs.getBoolean("Production"));
-	        			break;
-	        		case 3:
-	        			 temp = new Fresh(rs.getInt("Calories"));
-	        			break;
-	        		case 4:
-	        			temp = new Game(rs.getString("Genre"));
-	        			break;
-					default:
-						System.out.print("Error in creating temp object");
+					switch(sType) {
+						case 1:
+							temp = new Clothing(rs.getString("Material"));
+							break;
+						case 2:
+							temp = new Electronic(rs.getBoolean("Production"));
+							break;
+						case 3:
+							temp = new Fresh(rs.getInt("Calories"));
+							break;
+						case 4:
+							temp = new Game(rs.getString("Genre"));
+							break;
+						default:
+							System.out.print("Error in creating temp object");
 					}
 
 					temp.setID(rs.getInt("pID"));
@@ -172,7 +172,7 @@ public class DatabaseDriver {
 	}
 
 	public static LinkedList<Product> AddToCart(LinkedList<Product> currentCart, int pID){
-		String sql = "SELECT pID, Name, Price, Description, Category, INSTR(pID, '"+pID+"' peeps FROM products where peeps > 0";
+		String sql = "SELECT pID, Name, Price, Description, Category, Material, Production, Calories, Genre FROM products where pID == "+pID;
 		int sType;
 		Product temp = null;
 
@@ -187,21 +187,21 @@ public class DatabaseDriver {
 
 				sType = GetProductType(rs.getString("Category"));
 
-        		switch(sType) {
-        		case 1:
-        			 temp = new Clothing(rs.getString("Material"));
-        			break;
-        		case 2:
-        			 temp = new Electronic(rs.getBoolean("Production"));
-        			break;
-        		case 3:
-        			 temp = new Fresh(rs.getInt("Calories"));
-        			break;
-        		case 4:
-        			temp = new Game(rs.getString("Genre"));
-        			break;
-				default:
-					System.out.print("Error in creating temp object");
+				switch(sType) {
+					case 1:
+						temp = new Clothing(rs.getString("Material"));
+						break;
+					case 2:
+						temp = new Electronic(rs.getBoolean("Production"));
+						break;
+					case 3:
+						temp = new Fresh(rs.getInt("Calories"));
+						break;
+					case 4:
+						temp = new Game(rs.getString("Genre"));
+						break;
+					default:
+						System.out.print("Error in creating temp object");
 				}
 
 				temp.setID(rs.getInt("pID"));
@@ -218,9 +218,9 @@ public class DatabaseDriver {
 
 		return currentCart;
 	}
-	
-	public static Product getProd(int prodID) {
-		String sql = "SELECT pID, Name, Price, Description, Category, INSTR(pID, '"+prodID+"' peeps FROM products where peeps > 0";
+
+	public static Product getProd(String name) {
+		String sql = "SELECT pID, Name, Price, Description, Category, Material, Production, Calories, Genre, INSTR(Name, '"+name+"' peeps FROM products where peeps > 0";
 		int sType;
 		Product temp = null;
 
@@ -235,21 +235,21 @@ public class DatabaseDriver {
 
 				sType = GetProductType(rs.getString("Category"));
 
-        		switch(sType) {
-        		case 1:
-        			 temp = new Clothing(rs.getString("Material"));
-        			break;
-        		case 2:
-        			 temp = new Electronic(rs.getBoolean("Production"));
-        			break;
-        		case 3:
-        			 temp = new Fresh(rs.getInt("Calories"));
-        			break;
-        		case 4:
-        			temp = new Game(rs.getString("Genre"));
-        			break;
-				default:
-					System.out.print("Error in creating temp object");
+				switch(sType) {
+					case 1:
+						temp = new Clothing(rs.getString("Material"));
+						break;
+					case 2:
+						temp = new Electronic(rs.getBoolean("Production"));
+						break;
+					case 3:
+						temp = new Fresh(rs.getInt("Calories"));
+						break;
+					case 4:
+						temp = new Game(rs.getString("Genre"));
+						break;
+					default:
+						System.out.print("Error in creating temp object");
 				}
 
 				temp.setID(rs.getInt("pID"));
@@ -263,5 +263,99 @@ public class DatabaseDriver {
 			System.out.println(e.getMessage());
 		}
 		return temp;
+	}
+
+	public static Clothing pullClothing(LinkedList<Product> list) {
+		Clothing temp = (Clothing) list.getFirst();
+		list.removeFirst();
+		return temp;
+	}
+
+	public static Electronic pullElectronic(LinkedList<Product> list) {
+		Electronic temp = (Electronic) list.getFirst();
+		list.removeFirst();
+		return temp;
+	}
+
+	public static Game pullGame(LinkedList<Product> list) {
+		Game temp = (Game) list.getFirst();
+		list.removeFirst();
+		return temp;
+	}
+
+	public static Fresh pullFresh(LinkedList<Product> list) {
+		Fresh temp = (Fresh) list.getFirst();
+		list.removeFirst();
+		return temp;
+	}
+
+	public static CircleQueue<Product> BuildCategoryCQ(String category){
+		CircleQueue<Product> returnQueue = new CircleQueue<Product>();
+		Product temp = null;
+		int sType;
+
+		String sql = "Select pID, Name, Price, Description, Category, Material, Production, Calories, Genre, INSTR(Category, '"+category+"' peeps FROM products where peeps > 0";
+
+		try(Connection conn = connect();
+			PreparedStatement pstmt = conn.prepareStatement(sql)) {
+
+			ResultSet rs = pstmt.executeQuery();
+
+			while(rs.next()) {
+
+				sType = GetProductType(rs.getString("Category"));
+
+				switch(sType) {
+					case 1:
+						temp = new Clothing(rs.getString("Material"));
+						break;
+					case 2:
+						temp = new Electronic(rs.getBoolean("Production"));
+						break;
+					case 3:
+						temp = new Fresh(rs.getInt("Calories"));
+						break;
+					case 4:
+						temp = new Game(rs.getString("Genre"));
+						break;
+					default:
+						System.out.print("Error in creating temp object");
+				}
+
+				temp.setID(rs.getInt("pID"));
+				temp.setName(rs.getString("Name"));
+				temp.setPrice(rs.getFloat("Price"));
+				temp.setDescription(rs.getString("Description"));
+				temp.setType(rs.getString("Category"));
+
+				returnQueue.add(temp);
+			}
+		} catch(SQLException e) {
+			System.out.println(e.getMessage());
+		}
+		return returnQueue;
+	}
+
+
+	public static String getProdTypeFromName(String name) {
+		String sql = "SELECT pID, Name, Price, Description, Category, Material, Production, Calories, Genre, INSTR(Name, '"+name+"' peeps FROM products where peeps > 0";
+		int sType;
+		String ret = "";
+
+		try(Connection conn = connect();
+			PreparedStatement pstmt = conn.prepareStatement(sql)) {
+
+			//pstmt.setInt(1, character);
+
+			ResultSet rs = pstmt.executeQuery();
+
+			while(rs.next()) {
+
+				ret = rs.getString("Category");
+			}
+		} catch(SQLException e) {
+			System.out.println(e.getMessage());
+		}
+		return ret;
 	}
 }
