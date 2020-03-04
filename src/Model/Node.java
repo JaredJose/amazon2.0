@@ -80,7 +80,8 @@ public class Node<T> {
 
 	@Override
 	public String toString() {
-		return element.toString() + (next == null ? "" : ", " + next.toString());
+		//return element.toString() + (next == null ? "" : ", " + next.toString());
+		return element.toString();
 	}
 
 	public static void main(String[] args) {

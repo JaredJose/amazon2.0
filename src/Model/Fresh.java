@@ -10,6 +10,15 @@ public class Fresh extends Product {
 		setCalories(calories);
 	}
 	
+	Fresh(Product p){
+		super.type = "Fresh";
+		super.setDescription(p.getDescription());
+		super.setID(p.getID());
+		super.setName(p.getName());
+		super.setPrice(p.getPrice());
+		super.setType(p.productType());
+	}
+	
 	public void setCalories(int calories) {
 		this.calories = calories;
 	}

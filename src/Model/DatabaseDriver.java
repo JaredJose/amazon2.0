@@ -35,10 +35,10 @@ public class DatabaseDriver {
 
 		switch(filter) {
 			case 1:
-				sql = "SELECT pID, Name, Price, Description, Category, Material, Production, Genre, Calories, INSTR(Category, '"+searchTerm+"') peeps FROM products WHERE peeps > 0;";
+				sql = "SELECT pID, Name, Price, Description, Category, Material, Production, Genre, Calories, INSTR(Category, '"+searchTerm+"') peep1 FROM products WHERE peep1 > 0;";
 				break;
 			case 2:
-				sql = "SELECT pID, Name, Price, Description, Category, Material, Production, Genre, Calories, INSTR(Name, '"+searchTerm+"') peeps FROM products WHERE peeps > 0;";
+				sql = "SELECT pID, Name, Price, Description, Category, Material, Production, Genre, Calories, INSTR(Name, '"+searchTerm+"') peep2 FROM products WHERE peep2 > 0;";
 				break;
 			default:
 				sql = "ERROR";
@@ -128,7 +128,7 @@ public class DatabaseDriver {
 		int sType;
 
 		for(int i = 0; i < 5; i++){
-			String sql = "Select pID, Name, Price, Description, Category, Material, Production, Calories, Genre FROM products where pID == "+selID.get(i);
+			String sql = "Select pID, Name, Price, Description, Category, Material, Production, Calories, Genre FROM products where pID == "+selID.get(i)+";";
 
 			try(Connection conn = connect();
 				PreparedStatement pstmt = conn.prepareStatement(sql)) {
@@ -172,7 +172,7 @@ public class DatabaseDriver {
 	}
 
 	public static LinkedList<Product> AddToCart(LinkedList<Product> currentCart, int pID){
-		String sql = "SELECT pID, Name, Price, Description, Category, Material, Production, Calories, Genre FROM products where pID == "+pID;
+		String sql = "SELECT pID, Name, Price, Description, Category, Material, Production, Calories, Genre FROM products where pID == "+pID+";";
 		int sType;
 		Product temp = null;
 
@@ -220,7 +220,7 @@ public class DatabaseDriver {
 	}
 
 	public static Product getProd(String name) {
-		String sql = "SELECT pID, Name, Price, Description, Category, Material, Production, Calories, Genre, INSTR(Name, '"+name+"' peeps FROM products where peeps > 0";
+		String sql = "SELECT pID, Name, Price, Description, Category, Material, Production, Calories, Genre, INSTR(Name, '"+name+"') peep3 FROM products where peep3 > 0;";
 		int sType;
 		Product temp = null;
 
@@ -294,7 +294,7 @@ public class DatabaseDriver {
 		Product temp = null;
 		int sType;
 
-		String sql = "Select pID, Name, Price, Description, Category, Material, Production, Calories, Genre, INSTR(Category, '"+category+"' peeps FROM products where peeps > 0";
+		String sql = "Select pID, Name, Price, Description, Category, Material, Production, Calories, Genre, INSTR(Category, '"+category+"' peep4 FROM products where peep4 > 0;";
 
 		try(Connection conn = connect();
 			PreparedStatement pstmt = conn.prepareStatement(sql)) {
@@ -338,7 +338,7 @@ public class DatabaseDriver {
 
 
 	public static String getProdTypeFromName(String name) {
-		String sql = "SELECT pID, Name, Price, Description, Category, Material, Production, Calories, Genre, INSTR(Name, '"+name+"' peeps FROM products where peeps > 0";
+		String sql = "SELECT pID, Name, Price, Description, Category, Material, Production, Calories, Genre, INSTR(Name, '"+name+"' peep5 FROM products where peep5 > 0;";
 		int sType;
 		String ret = "";
 

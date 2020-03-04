@@ -4,7 +4,7 @@ import java.util.NoSuchElementException;
 
 public class LinkedList<T> {
 
-	private Node<T> firstNode;
+	public Node<T> firstNode;
 	private Node<T> lastNode;
 
 	public LinkedList() {

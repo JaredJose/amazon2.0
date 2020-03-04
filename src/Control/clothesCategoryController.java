@@ -1,5 +1,6 @@
 package Control;
 
+import Model.DatabaseDriver;
 import Model.LinkedList;
 import Model.Product;
 import View.main;
@@ -46,12 +47,22 @@ public class clothesCategoryController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
 
+    	/*
         productList.setItems(items);
         items.add("T shirt");
         items.add("Pants");
         items.add("Supreme Turtleneck");
+        */
 
-
+    	
+    	productList.setItems(items);
+    	
+		LinkedList<Product> temp = DatabaseDriver.BuildLL(1, "Clothing");
+		Model.Node<Product> tNode = temp.firstNode;
+		while(tNode != null) {
+			items.add(tNode.toString());	
+			tNode = tNode.getNext();
+		}
 
 
         /*

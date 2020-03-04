@@ -59,6 +59,12 @@ public class ProgramDriver {
 
         return temp;
     }
+    
+    public static Product getProd(String prodName) {
+    	Product temp = null;
+    	temp = DatabaseDriver.getProd(prodName);
+    	return temp;
+    }
 
 
 

@@ -5,7 +5,7 @@ public class maintest {
 	public static LinkedList<Product> productList = new LinkedList<>();  
 	
 	public static void main(String[] args) {
-		
+		/*
 		Electronic item = new Electronic(true);
 		item.setName("iPohne");
 		item.print();
@@ -27,10 +27,19 @@ public class maintest {
 		smashObject.print();
 		
 		System.out.println(productList);
-		
+		/*
 		/* 
 		 * Im shit 
 		 * leos fat ass
 		 */
+		
+		LinkedList<Product> temp = DatabaseDriver.BuildLL(1, "Fresh");
+		Node tNode = temp.firstNode;
+		while(tNode != null) {
+			System.out.println(tNode);
+			tNode = tNode.getNext();
+		}
+		
+		
 	}
 }

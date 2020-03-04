@@ -66,6 +66,8 @@ public class productController implements Initializable  {
 
         selectedProd = ProgramDriver.GetSelProd();
 
+        
+        /*
         if(selectedProd.equalsIgnoreCase("T shirt"))
         {
             productLbl.setText("T shirt");
@@ -92,6 +94,14 @@ public class productController implements Initializable  {
             Image image = new Image(getClass().getResource("/images/Thumbsup.jpg").toExternalForm());
             imageBox.setImage(image);
         }
+        */
+        
+        Product temp = null;
+        temp = ProgramDriver.getProd(selectedProd);
+        productLbl.setText(temp.getName());
+        priceLbl.setText(Float.toString(temp.getPrice()));
+        descLbl.setText(temp.getDescription());
+        
 
 
 

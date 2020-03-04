@@ -14,7 +14,7 @@ public abstract class Product {
 	public Product previous;
 	
 	public String toString() {
-		return (name + ": " + type);
+		return (name);
 	}
 	
 	public String productType() {

@@ -1,9 +1,12 @@
 package Control;
 
 import View.main;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
@@ -13,8 +16,14 @@ import javafx.scene.control.ListView;
 import javafx.stage.Stage;
 
 import java.io.IOException;
+import java.net.URL;
+import java.util.ResourceBundle;
 
-public class freshCategoryController {
+import Model.DatabaseDriver;
+import Model.LinkedList;
+import Model.Product;
+
+public class freshCategoryController implements Initializable{
 
     int productType = 0;
 
@@ -26,6 +35,23 @@ public class freshCategoryController {
 
     @FXML
     private ListView<?> productList;
+    
+    ObservableList<String> items = FXCollections.observableArrayList();
+    
+    
+	@Override
+	public void initialize(URL arg0, ResourceBundle arg1) {
+    	productList.setItems(items);
+    	
+		LinkedList<Product> temp = DatabaseDriver.BuildLL(1, "Clothing");
+		Model.Node<Product> tNode = temp.firstNode;
+		while(tNode != null) {
+			items.add(tNode.toString());	
+			tNode = tNode.getNext();
+		}
+		
+	}
+	
 
     @FXML
     void goHome(ActionEvent event) throws IOException {
@@ -46,5 +72,8 @@ public class freshCategoryController {
 
     public void Load(ActionEvent actionEvent) {
     }
+
+
+
 }
 
