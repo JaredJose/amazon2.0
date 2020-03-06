@@ -35,10 +35,10 @@ public class DatabaseDriver {
 
 		switch(filter) {
 			case 1:
-				sql = "SELECT pID, Name, Price, Description, Category, Material, Production, Genre, Calories, INSTR(Category, '"+searchTerm+"') peep1 FROM products WHERE peep1 > 0;";
+				sql = "SELECT pID, Name, Price, Description, Category, Material, Production, Genre, Calories, Image, INSTR(Category, '"+searchTerm+"') peep1 FROM products WHERE peep1 > 0;";
 				break;
 			case 2:
-				sql = "SELECT pID, Name, Price, Description, Category, Material, Production, Genre, Calories, INSTR(Name, '"+searchTerm+"') peep2 FROM products WHERE peep2 > 0;";
+				sql = "SELECT pID, Name, Price, Description, Category, Material, Production, Genre, Calories, Image, INSTR(Name, '"+searchTerm+"') peep2 FROM products WHERE peep2 > 0;";
 				break;
 			default:
 				sql = "ERROR";
@@ -77,6 +77,7 @@ public class DatabaseDriver {
 				temp.setPrice(rs.getFloat("Price"));
 				temp.setDescription(rs.getString("Description"));
 				temp.setType(rs.getString("Category"));
+				temp.setImageURL(rs.getString("Image"));
 
 				returnList.add(temp);
 			}

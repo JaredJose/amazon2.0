@@ -9,6 +9,7 @@ public abstract class Product {
 	public int ID;
 	public String type;
 	public String description;
+	public String imageURL;
 	
 	public Product next;
 	public Product previous;
@@ -45,6 +46,10 @@ public abstract class Product {
 		this.type = type;
 	}
 	
+	protected void setImageURL(String path) {
+		this.imageURL = path;
+	}
+	
 	public String getDescription() {
 		return this.description;
 	}
@@ -59,6 +64,10 @@ public abstract class Product {
 	
 	protected int getID() {
 		return this.ID;
+	}
+	
+	public String getImageURL() {
+		return this.imageURL;
 	}
 	
 	//Console

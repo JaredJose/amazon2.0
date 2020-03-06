@@ -13,6 +13,7 @@ import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.ListView;
+import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
 
 import java.io.IOException;
@@ -25,6 +26,7 @@ import Model.Product;
 
 public class freshCategoryController implements Initializable{
 
+	String selectedProduct = "";
     int productType = 0;
 
     @FXML
@@ -34,7 +36,7 @@ public class freshCategoryController implements Initializable{
     private Label productLbl;
 
     @FXML
-    private ListView<?> productList;
+    private ListView<String> productList;
     
     ObservableList<String> items = FXCollections.observableArrayList();
     
@@ -43,7 +45,7 @@ public class freshCategoryController implements Initializable{
 	public void initialize(URL arg0, ResourceBundle arg1) {
     	productList.setItems(items);
     	
-		LinkedList<Product> temp = DatabaseDriver.BuildLL(1, "Clothing");
+		LinkedList<Product> temp = DatabaseDriver.BuildLL(1, "Fresh");
 		Model.Node<Product> tNode = temp.firstNode;
 		while(tNode != null) {
 			items.add(tNode.toString());	
@@ -66,11 +68,25 @@ public class freshCategoryController implements Initializable{
     }
 
 
-    public void loadProducts(ActionEvent actionEvent) {
+    @FXML
+    void selectProduct(MouseEvent event) throws IOException {
 
-    }
 
-    public void Load(ActionEvent actionEvent) {
+        selectedProduct = productList.getSelectionModel().getSelectedItem();
+        ProgramDriver.SetSelProd(selectedProduct);
+
+
+        Parent freshViewParent = FXMLLoader.load(getClass().getResource("/View/productUI.fxml"));
+        Scene freshViewScene = new Scene(freshViewParent);
+
+        //This line gets scene info
+        Stage window = (Stage) ((Node)event.getSource()).getScene().getWindow();
+
+        window.setScene(freshViewScene);
+        window.show();
+
+
+
     }
 
 

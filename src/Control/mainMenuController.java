@@ -92,6 +92,7 @@ public class mainMenuController {
     void searchClicked(ActionEvent event) throws IOException {
         String searchTerm = "";
         searchTerm = searchBar.getText();
+        ProgramDriver.setSearch(searchTerm);
         Parent freshViewParent = FXMLLoader.load(getClass().getResource("/View/searchUI.fxml"));
         Scene freshViewScene = new Scene(freshViewParent);
 

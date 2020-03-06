@@ -11,6 +11,7 @@ import Model.Product;
 public class ProgramDriver {
 
     static String selProduct;
+    static String searchWord;
 
     public static LinkedList<Product> getFreshList(){
         return DatabaseDriver.BuildLL(1,  "Fresh");
@@ -26,6 +27,10 @@ public class ProgramDriver {
 
     public LinkedList<Product> getElectronicsList(){
         return DatabaseDriver.BuildLL(1,  "Electronics");
+    }
+    
+    public static LinkedList<Product> getSearchList(String searchTerm){
+    	return DatabaseDriver.BuildLL(2, searchTerm);
     }
 
     public static Fresh getFreshProduct(String prodName) {
@@ -74,5 +79,13 @@ public class ProgramDriver {
 
     public static String GetSelProd() {
         return selProduct;
+    }
+    
+    public static void setSearch(String s) {
+    	searchWord = s;
+    }
+    
+    public static String getSearchTerm() {
+    	return searchWord;
     }
 }

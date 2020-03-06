@@ -101,6 +101,8 @@ public class productController implements Initializable  {
         productLbl.setText(temp.getName());
         priceLbl.setText(Float.toString(temp.getPrice()));
         descLbl.setText(temp.getDescription());
+        //Image image = new Image(getClass().getResource(temp.getImageURL()).toExternalForm());
+        //imageBox.setImage(image);
         
 
 
